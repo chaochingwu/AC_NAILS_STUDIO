@@ -1,4 +1,8 @@
 'use strict';
+// V5.1.1: Instagram does not reliably permit navigation inside an embedded frame.
+// Open its profile and Reels links in a separate browser tab.
+document.querySelectorAll('a[href^="https://www.instagram.com/"]').forEach(link=>{link.target='_blank';link.rel='noopener noreferrer';});
+
 const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('#primary-nav');
 function menu(open){toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'關閉選單':'開啟選單');nav.classList.toggle('open',open);}
 toggle.addEventListener('click',()=>menu(toggle.getAttribute('aria-expanded')!=='true'));
